@@ -3,15 +3,14 @@ let button = document.querySelector("button");
 
 // ----adding button functionallity----
 button.addEventListener("click", async () => {
+    button.disabled = true;
     await fetch(
         "https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Dark,Pun?blacklistFlags=religious,racist"
     )
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             if (!(container.childElementCount === 0)) {
                 container.innerHTML = "";
-                // container.removeChild(document.querySelector(".content p"));
             }
             if (data.type == "single") {
                 let joke = document.createElement("p");
@@ -28,5 +27,9 @@ button.addEventListener("click", async () => {
                 container.appendChild(q);
                 container.appendChild(a);
             }
+            button.disabled = false;
+        })
+        .catch((err) => {
+            alert("Error occured " + err.message);
         });
 });

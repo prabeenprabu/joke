@@ -29,6 +29,8 @@ body {
   border-radius: 1.2rem;
   position: relative;
   padding: 1.5rem 1rem;
+  animation: bounce 5s ease-in-out infinite;
+  animation-direction: alternate;
 }
 .container::after {
   content: "";
@@ -96,6 +98,22 @@ body {
 .container button:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
 }
+.container button:focus {
+  border: none;
+  outline: none;
+}
 .container button:active {
   box-shadow: #3c4fe0 0 3px 7px inset;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
 }/*# sourceMappingURL=style.css.map */
